@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:provider_lesson/set_state/second_view.dart';
 
 class FirstView extends StatefulWidget {
   const FirstView({super.key});
@@ -8,7 +9,7 @@ class FirstView extends StatefulWidget {
 }
 
 class _FirstViewState extends State<FirstView> {
-  List<int> listSandar = [1, 2, 3, 4, 5, 6];
+  List<int> listSandar = [0];
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +40,25 @@ class _FirstViewState extends State<FirstView> {
                 );
               },
             ),
-          )
+          ),
+          ElevatedButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) {
+                    return SecondView(listSandarKelsin: listSandar);
+                  },
+                ),
+              );
+            },
+            child: const Text(
+              'Second page',
+              style: TextStyle(
+                fontSize: 30,
+              ),
+            ),
+          ),
         ],
       ),
       floatingActionButton: FloatingActionButton(

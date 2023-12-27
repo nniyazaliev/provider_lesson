@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:provider_lesson/set_state/first_view.dart';
+import 'package:provider_lesson/provider/first_provider_view.dart';
 
 void main() {
   runApp(const SetStateManage());
@@ -11,7 +11,7 @@ class SetStateManage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      home: FirstView(),
+      home: FirstProviderView(),
     );
   }
 }

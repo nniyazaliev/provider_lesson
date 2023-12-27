@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 
-class SecondView extends StatefulWidget {
+class SecondProviderView extends StatefulWidget {
   final List<int> listSandarKelsin;
 
-  const SecondView({
+  const SecondProviderView({
     required this.listSandarKelsin,
     super.key,
   });
 
   @override
-  State<SecondView> createState() => _SecondViewState();
+  State<SecondProviderView> createState() => _SecondProviderViewState();
 }
 
-class _SecondViewState extends State<SecondView> {
+class _SecondProviderViewState extends State<SecondProviderView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
