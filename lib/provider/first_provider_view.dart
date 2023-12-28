@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:provider_lesson/provider/sandar_provider.dart';
-import 'package:provider_lesson/set_state/second_view.dart';
+import 'package:provider_lesson/provider/second_provider_view.dart';
 
 class FirstProviderView extends StatelessWidget {
   const FirstProviderView({super.key});
@@ -44,8 +44,7 @@ class FirstProviderView extends StatelessWidget {
                     context,
                     MaterialPageRoute(
                       builder: (context) {
-                        return SecondView(
-                            listSandarKelsin: sandardynProvidery.listSandar);
+                        return const SecondProviderView();
                       },
                     ),
                   );
@@ -60,7 +59,9 @@ class FirstProviderView extends StatelessWidget {
             ],
           ),
           floatingActionButton: FloatingActionButton(
-            onPressed: () {},
+            onPressed: () {
+              sandardynProvidery.add();
+            },
             child: const Icon(
               Icons.add,
               size: 40,

@@ -1,62 +1,57 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:provider_lesson/provider/sandar_provider.dart';
 
-class SecondProviderView extends StatefulWidget {
-  final List<int> listSandarKelsin;
-
+class SecondProviderView extends StatelessWidget {
   const SecondProviderView({
-    required this.listSandarKelsin,
     super.key,
   });
 
   @override
-  State<SecondProviderView> createState() => _SecondProviderViewState();
-}
-
-class _SecondProviderViewState extends State<SecondProviderView> {
-  @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Second View'),
-      ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Center(
-            child: Text(
-              widget.listSandarKelsin.last.toString(),
-              style: const TextStyle(
-                fontSize: 30,
-              ),
-            ),
+    return Consumer<SandarProvider>(
+      builder: (context, sandardynProvidery, child) {
+        return Scaffold(
+          appBar: AppBar(
+            title: const Text('Second View'),
           ),
-          Expanded(
-            child: ListView.builder(
-              itemCount: widget.listSandarKelsin.length,
-              itemBuilder: (context, index) {
-                return Text(
-                  widget.listSandarKelsin[index].toString(),
+          body: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Center(
+                child: Text(
+                  sandardynProvidery.listSandar.last.toString(),
                   style: const TextStyle(
                     fontSize: 30,
                   ),
-                );
-              },
+                ),
+              ),
+              Expanded(
+                child: ListView.builder(
+                  itemCount: sandardynProvidery.listSandar.length,
+                  itemBuilder: (context, index) {
+                    return Text(
+                      sandardynProvidery.listSandar[index].toString(),
+                      style: const TextStyle(
+                        fontSize: 30,
+                      ),
+                    );
+                  },
+                ),
+              )
+            ],
+          ),
+          floatingActionButton: FloatingActionButton(
+            onPressed: () {
+              sandardynProvidery.add();
+            },
+            child: const Icon(
+              Icons.add,
+              size: 40,
             ),
-          )
-        ],
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          final akyrkySan = widget.listSandarKelsin.last;
-          widget.listSandarKelsin.add(akyrkySan + 1);
-
-          setState(() {});
-        },
-        child: const Icon(
-          Icons.add,
-          size: 40,
-        ),
-      ),
+          ),
+        );
+      },
     );
   }
 }
